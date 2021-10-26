@@ -1,12 +1,11 @@
-from flask import Flask
-
-app = Flask(__name__)
+from flask import Flask, render_template
+from flaskr import app
 
 
 @app.route("/")
 @app.route("/home")
 def home():
-    return "<h1>Welcome to Task Guru Made by Alex.</h1>"
+    return render_template('index.html')
 
 
 if __name__ == '__main__':
