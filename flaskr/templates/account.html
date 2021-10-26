@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Account</title>
+{% endblock %}
+
+{% block body %}
+    <h1 style="display:inline-block">Tasks</h1>
+    <small style="display:inline-block; color: grey;"> Welcome {{ current_user.username }}</small>
+    <table style="width:75%">
+        <tr>
+            <th style="text-align:left"> ID </th>
+            <th style="text-align:left"> Task </th>
+            <th style="text-align:left"> Complete </th>
+            <th style="text-align:left"> Added </th>
+            <th style="text-align:left">Actions </th>
+        </tr>
+        {% for task in tasks %}
+        <tr>
+            <td style="text-align:left"> {{ task.id }} </td>
+            <td style="text-align:left"> {{ task.content }} </td>
+            <td style="text-align:left"> {{ task.completed }} </td>
+            <td style="text-align:left"> {{ task.date_created.date() }} </td>
+            <td style="text-align:left">
+                <a href="/delete/{{task.id}}">Delete</a>
+                <br>
+                <a href="/update/{{task.id}}">Update</a>
+            </td>
+        </tr>
+        {% endfor %}
+        <hr>
+    </table>
+    <hr>
+    <form action="/account" method="POST">
+        <input type="text", name="content", id="content">
+        <input type="submit", value="Add Task">
+    </form>
+    <br>
+    <br>
+    <br>
+
+{% endblock %}

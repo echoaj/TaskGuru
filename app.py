@@ -1,12 +1,5 @@
-from flask import Flask, render_template
+# app variable must exist in __init__.py
 from flaskr import app
 
-
-@app.route("/")
-@app.route("/home")
-def home():
-    return render_template('index.html')
-
-
-if __name__ == '__main__':
-    app.run()
+if __name__ == "__main__":
+    app.run(debug=True)
